@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="SmartH2O_Service.ServiceLog" CodeBehind="ServiceLog.svc.cs" %>
