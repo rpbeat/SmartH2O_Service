@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace SmartH2O_Service
 {
@@ -22,8 +23,14 @@ namespace SmartH2O_Service
         {
             if(docc != null)
             {
-                this.doc.InnerText = docc;
-                return "Ok";
+                //this.doc.InnerText = docc;
+                XElement t = XElement.Parse(docc);
+
+                return "Ok:" + t.Element("Name").Value +
+                t.Element("Value").Value +
+                t.Element("ID").Value +
+                t.Element("Date").Value +
+                t.Element("Time").Value + "\n\n";
             }else
             {
                 return "Error";
