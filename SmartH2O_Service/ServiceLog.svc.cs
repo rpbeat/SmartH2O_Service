@@ -8,6 +8,7 @@ using System.Text;
 using System.Web.Hosting;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Schema;
 
 namespace SmartH2O_Service
 {
@@ -15,7 +16,11 @@ namespace SmartH2O_Service
     // NOTE: In order to launch WCF Test Client for testing this service, please select ServiceLog.svc or ServiceLog.svc.cs at the Solution Explorer and start debugging.
     public class ServiceLog : IServiceLog
     {
-        static string XmlPath= HostingEnvironment.ApplicationPhysicalPath + "App_Data\\XMLData.xml";
+        static string XmlPath= HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-sensors.xml";
+        static string XsdPath = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-sensors.xsd";
+        static bool xmlValid = true;
+        static string strXmlErrorReason;
+
         XmlDocument doc = new XmlDocument();
         public string DoWork()
         {
@@ -34,10 +39,10 @@ namespace SmartH2O_Service
                     doc.AppendChild(rootNode);
                     writeOnLogFile(doc, rootNode, XmlPath, t);
 
-                    return "Ok:" + t.Element("Name").Value +
-                            t.Element("Value").Value +
-                            t.Element("ID").Value +
-                            t.Element("Date").Value +
+                    return "Send to Web service Ok:" + t.Element("Name").Value+"  "+
+                            t.Element("Value").Value + "  " +
+                            t.Element("ID").Value + "  " +
+                            t.Element("Date").Value + "  " +
                             t.Element("Time").Value + "\n\n";
                 }
                 else
@@ -47,10 +52,10 @@ namespace SmartH2O_Service
                     XmlNode myNode = root.SelectSingleNode("/Sensors");
                     writeOnLogFile(doc, myNode, XmlPath, t);
 
-                    return "Ok:" + t.Element("Name").Value +
-                            t.Element("Value").Value +
-                            t.Element("ID").Value +
-                            t.Element("Date").Value +
+                    return "Ok:" + t.Element("Name").Value + "  " +
+                            t.Element("Value").Value + "  " +
+                            t.Element("ID").Value + "  " +
+                            t.Element("Date").Value + "  " +
                             t.Element("Time").Value + "\n\n";
                 }
             }else
@@ -80,6 +85,52 @@ namespace SmartH2O_Service
             return sb.ToString();
         }
 
+        public string GetValuesByDate(string date)
+        {
+            StringBuilder sb = new StringBuilder();
+            doc.Load(XmlPath);
+            if (doc != null)
+            {
+                XmlNodeList xnList = doc.SelectNodes("/Sensors/Sensor[Date='" + date + "']");
+                foreach (XmlNode node in xnList)
+                {
+                    sb.Append(node.InnerXml);
+                }
+            }
+            return sb.ToString();
+        }
+
+        public string GetValuesBetweenDate(string date1, string date2)
+        {
+            StringBuilder sb = new StringBuilder();
+            doc.Load(XmlPath);
+            if (doc != null)
+            {
+                XmlNodeList xnList = doc.SelectNodes("/Sensors/Sensor[Date>'"+ date1 + "' and Date<'"+ date2 + "']");
+                foreach (XmlNode node in xnList)
+                {
+                    sb.Append(node.InnerXml);
+                }
+            }
+            return sb.ToString();
+        }
+
+        public string GetValuesByDateAndHour(string date, string hour)
+        {
+            StringBuilder sb = new StringBuilder();
+            doc.Load(XmlPath);
+            if (doc != null)
+            {
+                XmlNodeList xnList = doc.SelectNodes("/Sensors/Sensor[Date='18/12/2016' and starts-with(Time,'"+hour+ "')]");
+                foreach (XmlNode node in xnList)
+                {
+                    sb.Append(node.InnerXml);
+                }
+            }
+            return sb.ToString();
+        }
+
+
         private static void writeOnLogFile(XmlDocument xmlDoc, XmlNode rootNode, string xmlPath, XElement t)
         {
             XmlElement sensor = xmlDoc.CreateElement("Sensor");
@@ -106,22 +157,24 @@ namespace SmartH2O_Service
             sensor.AppendChild(timeNode);
 
             //VALIDATION
-           /* xmlDoc.Schemas.Add(null, xsdPath);
+            xmlDoc.Schemas.Add(null, XsdPath);
             ValidationEventHandler eventHandler = new ValidationEventHandler(validateXML);
             xmlDoc.Validate(eventHandler);
             if (xmlValid)
             {
                 Console.Write("XML Status: OK!\n\n");
+                xmlDoc.Save(xmlPath);
             }
             else
             {
                 throw new XmlException(strXmlErrorReason.ToString());
-            }*/
+            }
+        }
 
-            // ServiceLog.ServiceLogClient service = new ServiceLog.ServiceLogClient();
-
-            //Console.Write(service.SendValues(xmlDoc.InnerText));
-            xmlDoc.Save(xmlPath);
+        private static void validateXML(Object sender, ValidationEventArgs args)
+        {
+            xmlValid = false;
+            strXmlErrorReason = args.Message;
         }
     }
 }

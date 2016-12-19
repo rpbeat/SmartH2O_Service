@@ -24,6 +24,16 @@ namespace SmartH2O_Service
         [OperationContract]
         string GetValuesBySensorName(string name);
 
+        [OperationContract]
+        string GetValuesByDate(string date);
+
+        [OperationContract]
+        string GetValuesByDateAndHour(string date, string hour);
+
+        [OperationContract]
+        string GetValuesBetweenDate(string date1, string date2)
+
+
     }
 
 }
