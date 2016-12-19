@@ -27,7 +27,7 @@ namespace SmartH2O_Service
         
         public string DoWork()
         {
-            return "You are in! "+ XmlPath;
+            return "You are in! "+ @XmlPath;
         }
 
         public string SendAlarm(string docc)
