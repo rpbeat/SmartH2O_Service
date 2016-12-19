@@ -44,7 +44,7 @@ namespace SmartH2O_Service
             }
             else
             {
-                return (HostingEnvironment.ApplicationPhysicalPath + " is not a valid file or directory.");
+                aux += (HostingEnvironment.ApplicationPhysicalPath + " is not a valid file or directory.");
             }
 
             return aux;
@@ -67,7 +67,7 @@ namespace SmartH2O_Service
         // Insert logic for processing found files here.
         public void ProcessFile(string path)
         {
-            this.aux += ("Processed file '{0}'.", path);
+            this.aux += ("Processed file "+path);
         }
 
         public string SendAlarm(string docc)
