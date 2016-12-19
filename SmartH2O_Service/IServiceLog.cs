@@ -31,7 +31,7 @@ namespace SmartH2O_Service
         string GetValuesByDateAndHour(string date, string hour);
 
         [OperationContract]
-        string GetValuesBetweenDate(string date1, string date2)
+        string GetValuesBetweenDate(string date1, string date2);
 
 
     }
