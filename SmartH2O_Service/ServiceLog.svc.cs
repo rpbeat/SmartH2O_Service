@@ -27,7 +27,11 @@ namespace SmartH2O_Service
         
         public string DoWork()
         {
-            return "You are in! "+ @XmlPath;
+            if (File.Exists(@XmlPath))
+            {
+                return "You are in! " + @XmlPath;
+            }
+            return "fudeu";
         }
 
         public string SendAlarm(string docc)
