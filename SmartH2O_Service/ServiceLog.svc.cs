@@ -77,6 +77,22 @@ namespace SmartH2O_Service
             return doc.InnerXml;
         }
 
+        public string GetAlarmsByDate(string date)
+        {
+            XmlDocument doc = new XmlDocument();
+            StringBuilder sb = new StringBuilder();
+            doc.Load(XmlPathAlarm);
+            if (doc != null)
+            {
+                XmlNodeList xnList = doc.SelectNodes("/Alarms/Sensor[Date='" + date + "']");
+                foreach (XmlNode node in xnList)
+                {
+                    sb.Append(node.InnerXml);
+                }
+            }
+            return sb.ToString();
+        }
+
         public string SendValues(string docc)
         {
             XmlDocument doc = new XmlDocument();
