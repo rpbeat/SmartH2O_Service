@@ -13,7 +13,6 @@ namespace SmartH2O_Service
     {
         public string DoWork()
         {
-
             return "You are in!";
         }
     }
