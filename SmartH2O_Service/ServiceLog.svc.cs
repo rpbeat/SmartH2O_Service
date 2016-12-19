@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Xml;
 
 namespace SmartH2O_Service
 {
@@ -11,9 +12,27 @@ namespace SmartH2O_Service
     // NOTE: In order to launch WCF Test Client for testing this service, please select ServiceLog.svc or ServiceLog.svc.cs at the Solution Explorer and start debugging.
     public class ServiceLog : IServiceLog
     {
+        XmlDocument doc = new XmlDocument();
         public string DoWork()
         {
             return "You are in!";
+        }
+
+        public string SendValues(XmlDocument docc)
+        {
+            if(docc != null)
+            {
+                this.doc = docc;
+                return "Ok";
+            }else
+            {
+                return "Error";
+            }
+        }
+
+        public string GetAllValues()
+        {
+            return "I found the file!" + doc.InnerXml;
         }
     }
 }

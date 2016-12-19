@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Xml;
 
 namespace SmartH2O_Service
 {
@@ -13,6 +14,13 @@ namespace SmartH2O_Service
     {
         [OperationContract]
         string DoWork();
+
+        [OperationContract]
+        string SendValues(XmlDocument data);
+
+        [OperationContract]
+        string GetAllValues()
+
     }
 
 }
