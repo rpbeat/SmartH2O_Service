@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Web;
 using System.Web.Hosting;
 using System.Xml;
 using System.Xml.Linq;
@@ -18,7 +19,8 @@ namespace SmartH2O_Service
     {
       //  var fileName = Path.Combine(Environment.GetFolderPath(
     //Environment.SpecialFolder.ApplicationData), "DateLinks.xml")
-        static string XmlPath = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-sensors.xml";
+        //static string XmlPath = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-sensors.xml";
+        static string XmlPath = HttpContext.Current.Server.MapPath("/App_Data/log-sensors.xml")
         static string XsdPath = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-sensors.xsd";
         static string XmlPathAlarm = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-alarms.xml";
         static string XsdPathAlarm = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-alarms.xsd";
