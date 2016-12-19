@@ -18,7 +18,7 @@ namespace SmartH2O_Service
     {
       //  var fileName = Path.Combine(Environment.GetFolderPath(
     //Environment.SpecialFolder.ApplicationData), "DateLinks.xml")
-        static string XmlPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "log-sensors.xml");
+        static string XmlPath = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-sensors.xml";
         static string XsdPath = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-sensors.xsd";
         static string XmlPathAlarm = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-alarms.xml";
         static string XsdPathAlarm = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-alarms.xsd";
