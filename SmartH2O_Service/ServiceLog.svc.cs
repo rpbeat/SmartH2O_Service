@@ -61,6 +61,7 @@ namespace SmartH2O_Service
 
         public string GetAllValues()
         {
+            doc.Load(XmlPath);
             return "I found the file!" + doc.InnerXml;
         }
 
