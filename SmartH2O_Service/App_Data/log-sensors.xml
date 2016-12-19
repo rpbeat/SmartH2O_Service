@@ -1,152 +1,135 @@
 <Sensors>
   <Sensor>
-    <Name>PH</Name>
-    <Value>1</Value>
-    <Date>19/12/2016</Date>
-    <Time>21:01:17</Time>
-  </Sensor>
-  <Sensor>
     <Name>NH3</Name>
-    <Value>2</Value>
+    <Value>1.87</Value>
+    <ID>2</ID>
     <Date>19/12/2016</Date>
-    <Time>21:01:27</Time>
+    <Time>21:37:24</Time>
   </Sensor>
   <Sensor>
     <Name>CI2</Name>
-    <Value>3</Value>
+    <Value>11.7</Value>
+    <ID>3</ID>
     <Date>19/12/2016</Date>
-    <Time>21:01:34</Time>
+    <Time>21:37:30</Time>
   </Sensor>
   <Sensor>
     <Name>PH</Name>
-    <Value>1</Value>
+    <Value>6.1</Value>
+    <ID>1</ID>
     <Date>19/12/2016</Date>
-    <Time>21:01:42</Time>
+    <Time>21:37:37</Time>
   </Sensor>
   <Sensor>
     <Name>NH3</Name>
-    <Value>2</Value>
+    <Value>1.82</Value>
+    <ID>2</ID>
     <Date>19/12/2016</Date>
-    <Time>21:01:49</Time>
+    <Time>21:37:44</Time>
   </Sensor>
   <Sensor>
     <Name>CI2</Name>
-    <Value>3</Value>
+    <Value>8.4</Value>
+    <ID>3</ID>
     <Date>19/12/2016</Date>
-    <Time>21:01:56</Time>
+    <Time>21:37:52</Time>
   </Sensor>
   <Sensor>
     <Name>PH</Name>
-    <Value>1</Value>
+    <Value>5.0</Value>
+    <ID>1</ID>
     <Date>19/12/2016</Date>
-    <Time>21:02:02</Time>
+    <Time>21:38:01</Time>
   </Sensor>
   <Sensor>
     <Name>NH3</Name>
-    <Value>2</Value>
+    <Value>1.1</Value>
+    <ID>2</ID>
     <Date>19/12/2016</Date>
-    <Time>21:02:09</Time>
+    <Time>21:38:08</Time>
   </Sensor>
   <Sensor>
     <Name>CI2</Name>
-    <Value>3</Value>
+    <Value>11.5</Value>
+    <ID>3</ID>
     <Date>19/12/2016</Date>
-    <Time>21:02:16</Time>
+    <Time>21:38:17</Time>
   </Sensor>
   <Sensor>
     <Name>PH</Name>
-    <Value>1</Value>
+    <Value>5.6</Value>
+    <ID>1</ID>
     <Date>19/12/2016</Date>
-    <Time>21:02:23</Time>
+    <Time>21:38:23</Time>
   </Sensor>
   <Sensor>
     <Name>NH3</Name>
-    <Value>2</Value>
+    <Value>1.70</Value>
+    <ID>2</ID>
     <Date>19/12/2016</Date>
-    <Time>21:02:29</Time>
-  </Sensor>
-  <Sensor>
-    <Name>NH3</Name>
-    <Value>2</Value>
-    <Date>19/12/2016</Date>
-    <Time>21:05:04</Time>
+    <Time>21:38:30</Time>
   </Sensor>
   <Sensor>
     <Name>CI2</Name>
-    <Value>3</Value>
+    <Value>7.0</Value>
+    <ID>3</ID>
     <Date>19/12/2016</Date>
-    <Time>21:05:11</Time>
-  </Sensor>
-  <Sensor>
-    <Name>PH</Name>
-    <Value>1</Value>
-    <Date>19/12/2016</Date>
-    <Time>21:05:18</Time>
+    <Time>21:38:36</Time>
   </Sensor>
   <Sensor>
     <Name>NH3</Name>
-    <Value>2</Value>
+    <Value>1.24</Value>
+    <ID>2</ID>
     <Date>19/12/2016</Date>
-    <Time>21:05:26</Time>
+    <Time>21:46:12</Time>
   </Sensor>
   <Sensor>
     <Name>CI2</Name>
-    <Value>3</Value>
+    <Value>8.2</Value>
+    <ID>3</ID>
     <Date>19/12/2016</Date>
-    <Time>21:05:35</Time>
+    <Time>21:46:18</Time>
   </Sensor>
   <Sensor>
     <Name>PH</Name>
-    <Value>1</Value>
+    <Value>6.7</Value>
+    <ID>1</ID>
     <Date>19/12/2016</Date>
-    <Time>21:05:43</Time>
+    <Time>21:46:24</Time>
   </Sensor>
   <Sensor>
     <Name>NH3</Name>
-    <Value>2</Value>
+    <Value>1.86</Value>
+    <ID>2</ID>
     <Date>19/12/2016</Date>
-    <Time>21:05:50</Time>
-  </Sensor>
-  <Sensor>
-    <Name>PH</Name>
-    <Value>1</Value>
-    <Date>19/12/2016</Date>
-    <Time>21:13:29</Time>
-  </Sensor>
-  <Sensor>
-    <Name>NH3</Name>
-    <Value>2</Value>
-    <Date>19/12/2016</Date>
-    <Time>21:13:39</Time>
+    <Time>21:46:31</Time>
   </Sensor>
   <Sensor>
     <Name>CI2</Name>
-    <Value>3</Value>
+    <Value>8.6</Value>
+    <ID>3</ID>
     <Date>19/12/2016</Date>
-    <Time>21:13:46</Time>
+    <Time>21:46:40</Time>
   </Sensor>
   <Sensor>
     <Name>PH</Name>
-    <Value>1</Value>
+    <Value>5.3</Value>
+    <ID>1</ID>
     <Date>19/12/2016</Date>
-    <Time>21:13:53</Time>
+    <Time>21:46:46</Time>
   </Sensor>
   <Sensor>
     <Name>NH3</Name>
-    <Value>2</Value>
+    <Value>1.42</Value>
+    <ID>2</ID>
     <Date>19/12/2016</Date>
-    <Time>21:14:01</Time>
+    <Time>21:46:53</Time>
   </Sensor>
   <Sensor>
     <Name>CI2</Name>
-    <Value>3</Value>
+    <Value>9.2</Value>
+    <ID>3</ID>
     <Date>19/12/2016</Date>
-    <Time>21:14:08</Time>
-  </Sensor>
-  <Sensor>
-    <Name>PH</Name>
-    <Value>1</Value>
-    <Date>19/12/2016</Date>
-    <Time>21:14:17</Time>
+    <Time>21:47:00</Time>
   </Sensor>
 </Sensors>

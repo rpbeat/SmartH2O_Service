@@ -213,12 +213,12 @@ namespace SmartH2O_Service
             sensor.AppendChild(nameNode);
 
             XmlNode valueNode = xmlDoc.CreateElement("Value");
-            valueNode.InnerText = t.Element("Name").Value;
+            valueNode.InnerText = t.Element("Value").Value;
             sensor.AppendChild(valueNode);
 
             XmlNode idNode = xmlDoc.CreateElement("ID");
-            valueNode.InnerText = t.Element("ID").Value;
-            sensor.AppendChild(valueNode);
+            idNode.InnerText = t.Element("ID").Value;
+            sensor.AppendChild(idNode);
 
             XmlNode dateNode = xmlDoc.CreateElement("Date");
             dateNode.InnerText = t.Element("Date").Value;
@@ -246,8 +246,8 @@ namespace SmartH2O_Service
                 {
                     throw new XmlException(strXmlErrorReason.ToString());
                 }
-
-            }else
+            }
+            else
             {
                 xmlDoc.Schemas.Add(null, XsdPath);
                 ValidationEventHandler eventHandler = new ValidationEventHandler(validateXML);
@@ -261,7 +261,6 @@ namespace SmartH2O_Service
                 {
                     throw new XmlException(strXmlErrorReason.ToString());
                 }
-
             }
         }
 

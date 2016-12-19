@@ -6,7 +6,8 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element type="xs:string" name="Name"/>
-              <xs:element type="xs:byte" name="Value"/>
+              <xs:element type="xs:float" name="Value"/>
+              <xs:element type="xs:byte" name="ID"/>
               <xs:element type="xs:string" name="Date"/>
               <xs:element type="xs:time" name="Time"/>
             </xs:sequence>
