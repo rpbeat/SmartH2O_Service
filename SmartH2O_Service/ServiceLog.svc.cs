@@ -20,35 +20,20 @@ namespace SmartH2O_Service
         //  var fileName = Path.Combine(Environment.GetFolderPath(
         //Environment.SpecialFolder.ApplicationData), "DateLinks.xml")
         //static string XmlPath = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-sensors.xml";
-        static string XmlPath = HttpContext.Current.Server.MapPath("~/SmartH2O_Service/App_Data/log-sensors.xml");
-        static string XsdPath = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-sensors.xsd";
+        static string XmlPath = Path.Combine(HostingEnvironment.ApplicationPhysicalPath, "App_Data\\log-sensors.xml");
+        static string XsdPath = Path.Combine(HostingEnvironment.ApplicationPhysicalPath, "App_Data\\log-sensors.xsd");
         static string XmlPathAlarm = Path.Combine(HostingEnvironment.ApplicationPhysicalPath , "App_Data\\log-alarms.xml");
         static string XsdPathAlarm = Path.Combine(HostingEnvironment.ApplicationPhysicalPath , "App_Data\\log-alarms.xsd");
 
         static bool xmlValid = true;
         static string strXmlErrorReason;
 
-
-        string aux = "";
         public string DoWork()
         {
-            if (File.Exists(HostingEnvironment.ApplicationPhysicalPath))
-            {
-                // This path is a file
-                ProcessFile(HostingEnvironment.ApplicationPhysicalPath);
-            }
-            else if (Directory.Exists(HostingEnvironment.ApplicationPhysicalPath))
-            {
-                // This path is a directory
-                ProcessDirectory(HostingEnvironment.ApplicationPhysicalPath);
-            }
+            if (File.Exists(XmlPath))
+                return "" + XmlPath;
             else
-            {
-                aux += (HostingEnvironment.ApplicationPhysicalPath + " is not a valid file or directory.");
-            }
-
-            return aux;
-
+                return "tens de treinar mais";
         }
 
         public void ProcessDirectory(string targetDirectory)
