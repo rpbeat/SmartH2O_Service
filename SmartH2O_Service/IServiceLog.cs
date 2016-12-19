@@ -19,7 +19,7 @@ namespace SmartH2O_Service
         string SendValues(XmlDocument data);
 
         [OperationContract]
-        string GetAllValues()
+        string GetAllValues();
 
     }
 
