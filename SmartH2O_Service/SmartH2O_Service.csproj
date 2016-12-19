@@ -101,6 +101,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Service References\ServiceReference1\ServiceLog.wsdl" />
     <None Include="Service References\ServiceReference1\ServiceLog.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -124,7 +125,6 @@
     </None>
     <Content Include="ServiceLog.svc" />
     <Content Include="Web.config" />
-    <None Include="Service References\ServiceReference1\ServiceLog.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IServiceLog.cs" />
