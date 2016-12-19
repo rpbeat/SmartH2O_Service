@@ -33,23 +33,25 @@ namespace SmartH2O_Service
                     XmlNode rootNode = doc.CreateElement("Sensors");
                     doc.AppendChild(rootNode);
                     writeOnLogFile(doc, rootNode, XmlPath, t);
+
                     return "Ok:" + t.Element("Name").Value +
-                t.Element("Value").Value +
-                t.Element("ID").Value +
-                t.Element("Date").Value +
-                t.Element("Time").Value + "\n\n";
+                            t.Element("Value").Value +
+                            t.Element("ID").Value +
+                            t.Element("Date").Value +
+                            t.Element("Time").Value + "\n\n";
                 }
                 else
                 {
+                    doc.Load(XmlPath);
                     XmlNode root = doc.DocumentElement;
                     XmlNode myNode = root.SelectSingleNode("/Sensors");
                     writeOnLogFile(doc, myNode, XmlPath, t);
 
                     return "Ok:" + t.Element("Name").Value +
-                t.Element("Value").Value +
-                t.Element("ID").Value +
-                t.Element("Date").Value +
-                t.Element("Time").Value + "\n\n";
+                            t.Element("Value").Value +
+                            t.Element("ID").Value +
+                            t.Element("Date").Value +
+                            t.Element("Time").Value + "\n\n";
                 }
             }else
             {
