@@ -18,18 +18,69 @@ namespace SmartH2O_Service
     {
         static string XmlPath= HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-sensors.xml";
         static string XsdPath = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-sensors.xsd";
+        static string XmlPathAlarm = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-alarms.xml";
+        static string XsdPathAlarm = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-alarms.xsd";
+
         static bool xmlValid = true;
         static string strXmlErrorReason;
 
-        XmlDocument doc = new XmlDocument();
+        
         public string DoWork()
         {
             return "You are in!";
         }
 
+        public string SendAlarm(string docc)
+        {
+            XmlDocument doc = new XmlDocument();
+            if (docc != null)
+            {
+                XElement t = XElement.Parse(docc);
+                if (!File.Exists(XmlPathAlarm))
+                {
+                    XmlNode rootNode = doc.CreateElement("Alarms");
+                    doc.AppendChild(rootNode);
+                    writeOnLogFile(doc, rootNode, XmlPathAlarm, t, true);
+
+                    return "Send to Web service Ok:" + t.Element("Name").Value + "  " +
+                            t.Element("Value").Value + "  " +
+                            t.Element("ID").Value + "  " +
+                            t.Element("Date").Value + "  " +
+                            t.Element("Time").Value + "  " +
+                            t.Element("Alarm").Value + "\n\n";
+                }
+                else
+                {
+                    doc.Load(XmlPathAlarm);
+                    XmlNode root = doc.DocumentElement;
+                    XmlNode myNode = root.SelectSingleNode("/Alarms");
+                    writeOnLogFile(doc, myNode, XmlPathAlarm, t, true);
+
+                    return "Send to Web service Ok:" + t.Element("Name").Value + "  " +
+                            t.Element("Value").Value + "  " +
+                            t.Element("ID").Value + "  " +
+                            t.Element("Date").Value + "  " +
+                            t.Element("Time").Value + "  " +
+                             t.Element("Alarm").Value + "\n\n";
+                }
+            }
+            else
+            {
+                return "Error";
+            }
+        }
+
+        public string GetAllAlmars()
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(XmlPathAlarm);
+            return doc.InnerXml;
+        }
+
         public string SendValues(string docc)
         {
-            if(docc != null)
+            XmlDocument doc = new XmlDocument();
+            if (docc != null)
             {
                 //this.doc.InnerText = docc;
                 XElement t = XElement.Parse(docc);
@@ -37,7 +88,7 @@ namespace SmartH2O_Service
                 {
                     XmlNode rootNode = doc.CreateElement("Sensors");
                     doc.AppendChild(rootNode);
-                    writeOnLogFile(doc, rootNode, XmlPath, t);
+                    writeOnLogFile(doc, rootNode, XmlPath, t, false);
 
                     return "Send to Web service Ok:" + t.Element("Name").Value+"  "+
                             t.Element("Value").Value + "  " +
@@ -50,7 +101,7 @@ namespace SmartH2O_Service
                     doc.Load(XmlPath);
                     XmlNode root = doc.DocumentElement;
                     XmlNode myNode = root.SelectSingleNode("/Sensors");
-                    writeOnLogFile(doc, myNode, XmlPath, t);
+                    writeOnLogFile(doc, myNode, XmlPath, t, false);
 
                     return "Ok:" + t.Element("Name").Value + "  " +
                             t.Element("Value").Value + "  " +
@@ -66,12 +117,14 @@ namespace SmartH2O_Service
 
         public string GetAllValues()
         {
+            XmlDocument doc = new XmlDocument();
             doc.Load(XmlPath);
             return  doc.InnerXml;
         }
 
         public string GetValuesBySensorName(string name)
         {
+            XmlDocument doc = new XmlDocument();
             StringBuilder sb = new StringBuilder();
             doc.Load(XmlPath);
             if (doc != null)
@@ -87,6 +140,7 @@ namespace SmartH2O_Service
 
         public string GetValuesByDate(string date)
         {
+            XmlDocument doc = new XmlDocument();
             StringBuilder sb = new StringBuilder();
             doc.Load(XmlPath);
             if (doc != null)
@@ -102,6 +156,7 @@ namespace SmartH2O_Service
 
         public string GetValuesBetweenDate(string date1, string date2)
         {
+            XmlDocument doc = new XmlDocument();
             StringBuilder sb = new StringBuilder();
             doc.Load(XmlPath);
             if (doc != null)
@@ -117,11 +172,12 @@ namespace SmartH2O_Service
 
         public string GetValuesByDateAndHour(string date, string hour)
         {
+            XmlDocument doc = new XmlDocument();
             StringBuilder sb = new StringBuilder();
             doc.Load(XmlPath);
             if (doc != null)
             {
-                XmlNodeList xnList = doc.SelectNodes("/Sensors/Sensor[Date='18/12/2016' and starts-with(Time,'"+hour+ "')]");
+                XmlNodeList xnList = doc.SelectNodes("/Sensors/Sensor[Date='18/12/2016' and starts-with(Time,'" + hour + "')]");
                 foreach (XmlNode node in xnList)
                 {
                     sb.Append(node.InnerXml);
@@ -131,7 +187,7 @@ namespace SmartH2O_Service
         }
 
 
-        private static void writeOnLogFile(XmlDocument xmlDoc, XmlNode rootNode, string xmlPath, XElement t)
+        private static void writeOnLogFile(XmlDocument xmlDoc, XmlNode rootNode, string xmlPath, XElement t, bool isAlarm)
         {
             XmlElement sensor = xmlDoc.CreateElement("Sensor");
             rootNode.AppendChild(sensor);
@@ -156,18 +212,40 @@ namespace SmartH2O_Service
             timeNode.InnerText = t.Element("Time").Value;
             sensor.AppendChild(timeNode);
 
-            //VALIDATION
-            xmlDoc.Schemas.Add(null, XsdPath);
-            ValidationEventHandler eventHandler = new ValidationEventHandler(validateXML);
-            xmlDoc.Validate(eventHandler);
-            if (xmlValid)
+            if (isAlarm)
             {
-                Console.Write("XML Status: OK!\n\n");
-                xmlDoc.Save(xmlPath);
-            }
-            else
+                XmlNode alarmNode = xmlDoc.CreateElement("Alarm");
+                alarmNode.InnerText = t.Element("Alarm").Value;
+                sensor.AppendChild(alarmNode);
+
+                xmlDoc.Schemas.Add(null, XsdPathAlarm);
+                ValidationEventHandler eventHandler = new ValidationEventHandler(validateXML);
+                xmlDoc.Validate(eventHandler);
+                if (xmlValid)
+                {
+                    Console.Write("XML Status: OK!\n\n");
+                    xmlDoc.Save(xmlPath);
+                }
+                else
+                {
+                    throw new XmlException(strXmlErrorReason.ToString());
+                }
+
+            }else
             {
-                throw new XmlException(strXmlErrorReason.ToString());
+                xmlDoc.Schemas.Add(null, XsdPath);
+                ValidationEventHandler eventHandler = new ValidationEventHandler(validateXML);
+                xmlDoc.Validate(eventHandler);
+                if (xmlValid)
+                {
+                    Console.Write("XML Status: OK!\n\n");
+                    xmlDoc.Save(xmlPath);
+                }
+                else
+                {
+                    throw new XmlException(strXmlErrorReason.ToString());
+                }
+
             }
         }
 

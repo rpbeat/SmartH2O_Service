@@ -33,6 +33,12 @@ namespace SmartH2O_Service
         [OperationContract]
         string GetValuesBetweenDate(string date1, string date2);
 
+        [OperationContract]
+        string SendAlarm(string docc);
+
+        [OperationContract]
+        string GetAllAlmars();
+
 
     }
 
