@@ -22,8 +22,8 @@ namespace SmartH2O_Service
         //static string XmlPath = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-sensors.xml";
         static string XmlPath = HttpContext.Current.Server.MapPath("~/SmartH2O_Service/App_Data/log-sensors.xml");
         static string XsdPath = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-sensors.xsd";
-        static string XmlPathAlarm = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-alarms.xml";
-        static string XsdPathAlarm = HostingEnvironment.ApplicationPhysicalPath + "App_Data\\log-alarms.xsd";
+        static string XmlPathAlarm = Path.Combine(HostingEnvironment.ApplicationPhysicalPath , "App_Data\\log-alarms.xml");
+        static string XsdPathAlarm = Path.Combine(HostingEnvironment.ApplicationPhysicalPath , "App_Data\\log-alarms.xsd");
 
         static bool xmlValid = true;
         static string strXmlErrorReason;
