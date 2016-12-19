@@ -16,7 +16,7 @@ namespace SmartH2O_Service
         string DoWork();
 
         [OperationContract]
-        string SendValues(XmlDocument data);
+        string SendValues(string data);
 
         [OperationContract]
         string GetAllValues();

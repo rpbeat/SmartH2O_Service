@@ -18,11 +18,11 @@ namespace SmartH2O_Service
             return "You are in!";
         }
 
-        public string SendValues(XmlDocument docc)
+        public string SendValues(string docc)
         {
             if(docc != null)
             {
-                this.doc = docc;
+                this.doc.InnerText = docc;
                 return "Ok";
             }else
             {
