@@ -65,6 +65,21 @@ namespace SmartH2O_Service
             return "I found the file!" + doc.InnerXml;
         }
 
+        public string GetValuesBySensorName(string name)
+        {
+            StringBuilder sb = new StringBuilder();
+            doc.Load(XmlPath);
+            if (doc != null)
+            {
+                XmlNodeList xnList =  doc.SelectNodes("/Sensors/Sensor[Name='"+name+"']");
+                foreach(XmlNode node in xnList)
+                {
+                    sb.Append(node.InnerXml);
+                }
+            }
+            return sb.ToString();
+        }
+
         private static void writeOnLogFile(XmlDocument xmlDoc, XmlNode rootNode, string xmlPath, XElement t)
         {
             XmlElement sensor = xmlDoc.CreateElement("Sensor");

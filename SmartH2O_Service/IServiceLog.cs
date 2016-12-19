@@ -21,6 +21,9 @@ namespace SmartH2O_Service
         [OperationContract]
         string GetAllValues();
 
+        [OperationContract]
+        string GetValuesBySensorName(string name);
+
     }
 
 }
