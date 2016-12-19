@@ -256,6 +256,7 @@ namespace SmartH2O_Service
                 {
                     Console.Write("XML Status: OK!\n\n");
                     xmlDoc.Save(xmlPath);
+
                 }
                 else
                 {
