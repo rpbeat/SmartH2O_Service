@@ -109,6 +109,7 @@ namespace SmartH2O_Service
                             t.Element("Value").Value + "  " +
                             t.Element("ID").Value + "  " +
                             t.Element("Date").Value + "  " +
+                            t.Element("TimeStamp").Value + "  " +
                             t.Element("Time").Value + "\n\n";
                 }
                 else
@@ -122,6 +123,7 @@ namespace SmartH2O_Service
                             t.Element("Value").Value + "  " +
                             t.Element("ID").Value + "  " +
                             t.Element("Date").Value + "  " +
+                            t.Element("TimeStamp").Value + "  " +
                             t.Element("Time").Value + "\n\n";
                 }
             }else
@@ -226,6 +228,10 @@ namespace SmartH2O_Service
             XmlNode timeNode = xmlDoc.CreateElement("Time");
             timeNode.InnerText = t.Element("Time").Value;
             sensor.AppendChild(timeNode);
+
+            XmlNode timeStampNode = xmlDoc.CreateElement("TimeStamp");
+            timeStampNode.InnerText = t.Element("TimeStamp").Value;
+            sensor.AppendChild(timeStampNode);
 
             if (isAlarm)
             {
