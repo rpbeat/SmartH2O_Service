@@ -121,6 +121,7 @@ namespace SmartH2O_Service
                     XmlNode alarmNode = docToSend.CreateElement("Alarm");
                     alarmNode.InnerText = node["Alarm"].InnerText;
                     sensor.AppendChild(alarmNode);
+
                 }
             }
             return docToSend.InnerXml;
@@ -167,6 +168,10 @@ namespace SmartH2O_Service
                     XmlNode timeStampNode = docToSend.CreateElement("TimeStamp");
                     timeStampNode.InnerText = node["TimeStamp"].InnerText;
                     sensor.AppendChild(timeStampNode);
+
+                    XmlNode alarmNode = docToSend.CreateElement("Alarm");
+                    alarmNode.InnerText = node["Alarm"].InnerText;
+                    sensor.AppendChild(alarmNode);
                 }
             }
             return docToSend.InnerXml;
@@ -213,6 +218,10 @@ namespace SmartH2O_Service
                     XmlNode timeStampNode = docToSend.CreateElement("TimeStamp");
                     timeStampNode.InnerText = node["TimeStamp"].InnerText;
                     sensor.AppendChild(timeStampNode);
+
+                    XmlNode alarmNode = docToSend.CreateElement("Alarm");
+                    alarmNode.InnerText = node["Alarm"].InnerText;
+                    sensor.AppendChild(alarmNode);
                 }
             }
             return docToSend.InnerXml;
