@@ -106,7 +106,7 @@ namespace SmartH2O_Service
                     writeOnLogFile(doc, rootNode, xmlPathLog, t, false);
 
                     return "Send to Web service Ok:" + t.Element("Name").Value+"  "+
-                            t.Element("Value").Value + "  " +
+                            t.Element("Value").Value + "  " + 
                             t.Element("ID").Value + "  " +
                             t.Element("Date").Value + "  " +
                             t.Element("TimeStamp").Value + "  " +
