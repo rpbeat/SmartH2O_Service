@@ -132,4 +132,32 @@
     <Date>19/12/2016</Date>
     <Time>21:47:00</Time>
   </Sensor>
+  <Sensor>
+    <Name>NH3</Name>
+    <Value>1.92</Value>
+    <ID>2</ID>
+    <Date>20/12/2016</Date>
+    <Time>00:04:36</Time>
+  </Sensor>
+  <Sensor>
+    <Name>CI2</Name>
+    <Value>9.7</Value>
+    <ID>3</ID>
+    <Date>20/12/2016</Date>
+    <Time>00:04:42</Time>
+  </Sensor>
+  <Sensor>
+    <Name>PH</Name>
+    <Value>6.0</Value>
+    <ID>1</ID>
+    <Date>20/12/2016</Date>
+    <Time>00:04:48</Time>
+  </Sensor>
+  <Sensor>
+    <Name>NH3</Name>
+    <Value>1.56</Value>
+    <ID>2</ID>
+    <Date>20/12/2016</Date>
+    <Time>00:04:55</Time>
+  </Sensor>
 </Sensors>

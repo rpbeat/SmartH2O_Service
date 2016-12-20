@@ -71,4 +71,20 @@
     <Time>21:46:46</Time>
     <Alarm>Between 0 and 14</Alarm>
   </Sensor>
+  <Sensor>
+    <Name>PH</Name>
+    <Value>5.4</Value>
+    <ID>1</ID>
+    <Date>20/12/2016</Date>
+    <Time>00:04:28</Time>
+    <Alarm>Between 0 and 14</Alarm>
+  </Sensor>
+  <Sensor>
+    <Name>PH</Name>
+    <Value>6.0</Value>
+    <ID>1</ID>
+    <Date>20/12/2016</Date>
+    <Time>00:04:48</Time>
+    <Alarm>Between 0 and 14</Alarm>
+  </Sensor>
 </Alarms>
