@@ -79,17 +79,51 @@ namespace SmartH2O_Service
         public string GetAlarmsByDate(string date)
         {
             XmlDocument doc = new XmlDocument();
-            StringBuilder sb = new StringBuilder();
+            XmlDocument docToSend = new XmlDocument();
             doc.Load(xmlPathAlarm);
             if (doc != null)
             {
+               
+                XmlNode rootNode = docToSend.CreateElement("Alarms");
+                docToSend.AppendChild(rootNode);
+               
                 XmlNodeList xnList = doc.SelectNodes("/Alarms/Sensor[Date='" + date + "']");
+
                 foreach (XmlNode node in xnList)
                 {
-                    sb.Append(node.InnerXml);
+                    XmlElement sensor = docToSend.CreateElement("Sensor");
+                    rootNode.AppendChild(sensor);
+
+                    XmlNode nameNode = docToSend.CreateElement("Name");
+                    nameNode.InnerText = node["Name"].InnerText;
+                    sensor.AppendChild(nameNode);
+
+                    XmlNode valueNode = docToSend.CreateElement("Value");
+                    valueNode.InnerText = node["Value"].InnerText;
+                    sensor.AppendChild(valueNode);
+
+                    XmlNode idNode = docToSend.CreateElement("ID");
+                    idNode.InnerText = node["ID"].InnerText;
+                    sensor.AppendChild(idNode);
+
+                    XmlNode dateNode = docToSend.CreateElement("Date");
+                    dateNode.InnerText = node["Date"].InnerText;
+                    sensor.AppendChild(dateNode);
+
+                    XmlNode timeNode = docToSend.CreateElement("Time");
+                    timeNode.InnerText = node["Time"].InnerText;
+                    sensor.AppendChild(timeNode);
+
+                    XmlNode timeStampNode = docToSend.CreateElement("TimeStamp");
+                    timeStampNode.InnerText = node["Time"].InnerText;
+                    sensor.AppendChild(timeStampNode);
+
+                    XmlNode alarmNode = docToSend.CreateElement("Alarm");
+                    alarmNode.InnerText = node["Alarm"].InnerText;
+                    sensor.AppendChild(alarmNode);
                 }
             }
-            return sb.ToString();
+            return docToSend.InnerXml;
         }
 
         public string SendValues(string docc)
@@ -142,65 +176,183 @@ namespace SmartH2O_Service
         public string GetValuesBySensorName(string name)
         {
             XmlDocument doc = new XmlDocument();
-            StringBuilder sb = new StringBuilder();
+            XmlDocument docToSend = new XmlDocument();
+
+            XmlNode rootNode = docToSend.CreateElement("Sensors");
+            docToSend.AppendChild(rootNode);
+
             doc.Load(xmlPathLog);
             if (doc != null)
             {
                 XmlNodeList xnList =  doc.SelectNodes("/Sensors/Sensor[Name='"+name+"']");
                 foreach(XmlNode node in xnList)
                 {
-                    sb.Append(node.InnerXml);
+                    XmlElement sensor = docToSend.CreateElement("Sensor");
+                    rootNode.AppendChild(sensor);
+
+                    XmlNode nameNode = docToSend.CreateElement("Name");
+                    nameNode.InnerText = node["Name"].InnerText;
+                    sensor.AppendChild(nameNode);
+
+                    XmlNode valueNode = docToSend.CreateElement("Value");
+                    valueNode.InnerText = node["Value"].InnerText;
+                    sensor.AppendChild(valueNode);
+
+                    XmlNode idNode = docToSend.CreateElement("ID");
+                    idNode.InnerText = node["ID"].InnerText;
+                    sensor.AppendChild(idNode);
+
+                    XmlNode dateNode = docToSend.CreateElement("Date");
+                    dateNode.InnerText = node["Date"].InnerText;
+                    sensor.AppendChild(dateNode);
+
+                    XmlNode timeNode = docToSend.CreateElement("Time");
+                    timeNode.InnerText = node["Time"].InnerText;
+                    sensor.AppendChild(timeNode);
+
+                    XmlNode timeStampNode = docToSend.CreateElement("TimeStamp");
+                    timeStampNode.InnerText = node["Time"].InnerText;
+                    sensor.AppendChild(timeStampNode);
                 }
             }
-            return sb.ToString();
+            return docToSend.InnerXml;
         }
 
         public string GetValuesByDate(string date)
         {
             XmlDocument doc = new XmlDocument();
-            StringBuilder sb = new StringBuilder();
+            XmlDocument docToSend = new XmlDocument();
+
+            XmlNode rootNode = docToSend.CreateElement("Sensors");
+            docToSend.AppendChild(rootNode);
+
             doc.Load(xmlPathLog);
             if (doc != null)
             {
                 XmlNodeList xnList = doc.SelectNodes("/Sensors/Sensor[Date='" + date + "']");
                 foreach (XmlNode node in xnList)
                 {
-                    sb.Append(node.InnerXml);
+                    XmlElement sensor = docToSend.CreateElement("Sensor");
+                    rootNode.AppendChild(sensor);
+
+                    XmlNode nameNode = docToSend.CreateElement("Name");
+                    nameNode.InnerText = node["Name"].InnerText;
+                    sensor.AppendChild(nameNode);
+
+                    XmlNode valueNode = docToSend.CreateElement("Value");
+                    valueNode.InnerText = node["Value"].InnerText;
+                    sensor.AppendChild(valueNode);
+
+                    XmlNode idNode = docToSend.CreateElement("ID");
+                    idNode.InnerText = node["ID"].InnerText;
+                    sensor.AppendChild(idNode);
+
+                    XmlNode dateNode = docToSend.CreateElement("Date");
+                    dateNode.InnerText = node["Date"].InnerText;
+                    sensor.AppendChild(dateNode);
+
+                    XmlNode timeNode = docToSend.CreateElement("Time");
+                    timeNode.InnerText = node["Time"].InnerText;
+                    sensor.AppendChild(timeNode);
+
+                    XmlNode timeStampNode = docToSend.CreateElement("TimeStamp");
+                    timeStampNode.InnerText = node["Time"].InnerText;
+                    sensor.AppendChild(timeStampNode);
                 }
             }
-            return sb.ToString();
+
+            return docToSend.InnerXml;
         }
 
         public string GetValuesBetweenDate(string date1, string date2)
         {
             XmlDocument doc = new XmlDocument();
-            StringBuilder sb = new StringBuilder();
+            XmlDocument docToSend = new XmlDocument();
+
+            XmlNode rootNode = docToSend.CreateElement("Sensors");
+            docToSend.AppendChild(rootNode);
+
             doc.Load(xmlPathLog);
             if (doc != null)
             {
                 XmlNodeList xnList = doc.SelectNodes("/Sensors/Sensor[Date>'"+ date1 + "' and Date<'"+ date2 + "']");
                 foreach (XmlNode node in xnList)
                 {
-                    sb.Append(node.InnerXml);
+                    XmlElement sensor = docToSend.CreateElement("Sensor");
+                    rootNode.AppendChild(sensor);
+
+                    XmlNode nameNode = docToSend.CreateElement("Name");
+                    nameNode.InnerText = node["Name"].InnerText;
+                    sensor.AppendChild(nameNode);
+
+                    XmlNode valueNode = docToSend.CreateElement("Value");
+                    valueNode.InnerText = node["Value"].InnerText;
+                    sensor.AppendChild(valueNode);
+
+                    XmlNode idNode = docToSend.CreateElement("ID");
+                    idNode.InnerText = node["ID"].InnerText;
+                    sensor.AppendChild(idNode);
+
+                    XmlNode dateNode = docToSend.CreateElement("Date");
+                    dateNode.InnerText = node["Date"].InnerText;
+                    sensor.AppendChild(dateNode);
+
+                    XmlNode timeNode = docToSend.CreateElement("Time");
+                    timeNode.InnerText = node["Time"].InnerText;
+                    sensor.AppendChild(timeNode);
+
+                    XmlNode timeStampNode = docToSend.CreateElement("TimeStamp");
+                    timeStampNode.InnerText = node["Time"].InnerText;
+                    sensor.AppendChild(timeStampNode);
                 }
             }
-            return sb.ToString();
+            return docToSend.InnerXml;
         }
 
         public string GetValuesByDateAndHour(string date, string hour)
         {
             XmlDocument doc = new XmlDocument();
-            StringBuilder sb = new StringBuilder();
+
+            XmlDocument docToSend = new XmlDocument();
+
+            XmlNode rootNode = docToSend.CreateElement("Sensors");
+            docToSend.AppendChild(rootNode);
+
             doc.Load(xmlPathLog);
             if (doc != null)
             {
                 XmlNodeList xnList = doc.SelectNodes("/Sensors/Sensor[Date='"+date+"' and starts-with(Time,'" + hour + "')]");
                 foreach (XmlNode node in xnList)
                 {
-                    sb.Append(node.InnerXml);
+                    XmlElement sensor = docToSend.CreateElement("Sensor");
+                    rootNode.AppendChild(sensor);
+
+                    XmlNode nameNode = docToSend.CreateElement("Name");
+                    nameNode.InnerText = node["Name"].InnerText;
+                    sensor.AppendChild(nameNode);
+
+                    XmlNode valueNode = docToSend.CreateElement("Value");
+                    valueNode.InnerText = node["Value"].InnerText;
+                    sensor.AppendChild(valueNode);
+
+                    XmlNode idNode = docToSend.CreateElement("ID");
+                    idNode.InnerText = node["ID"].InnerText;
+                    sensor.AppendChild(idNode);
+
+                    XmlNode dateNode = docToSend.CreateElement("Date");
+                    dateNode.InnerText = node["Date"].InnerText;
+                    sensor.AppendChild(dateNode);
+
+                    XmlNode timeNode = docToSend.CreateElement("Time");
+                    timeNode.InnerText = node["Time"].InnerText;
+                    sensor.AppendChild(timeNode);
+
+                    XmlNode timeStampNode = docToSend.CreateElement("TimeStamp");
+                    timeStampNode.InnerText = node["Time"].InnerText;
+                    sensor.AppendChild(timeStampNode);
                 }
             }
-            return sb.ToString();
+            return docToSend.InnerXml;
         }
 
 
