@@ -275,7 +275,7 @@ namespace SmartH2O_Service
             doc.Load(xmlPathLog);
             if (doc != null)
             {
-                XmlNodeList xnList = doc.SelectNodes("/Sensors/Sensor[Date>'"+ date1 + "' and Date<'"+ date2 + "']");
+                XmlNodeList xnList = doc.SelectNodes("/Sensors/Sensor[Date>='"+ date1 + "' and Date<='"+ date2 + "']");
                 foreach (XmlNode node in xnList)
                 {
                     XmlElement sensor = docToSend.CreateElement("Sensor");
