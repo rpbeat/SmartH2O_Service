@@ -194,7 +194,7 @@ namespace SmartH2O_Service
             doc.Load(xmlPathLog);
             if (doc != null)
             {
-                XmlNodeList xnList = doc.SelectNodes("/Sensors/Sensor[Date='18/12/2016' and starts-with(Time,'" + hour + "')]");
+                XmlNodeList xnList = doc.SelectNodes("/Sensors/Sensor[Date='"+date+"' and starts-with(Time,'" + hour + "')]");
                 foreach (XmlNode node in xnList)
                 {
                     sb.Append(node.InnerXml);
