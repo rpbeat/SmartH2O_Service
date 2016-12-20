@@ -134,7 +134,7 @@ namespace SmartH2O_Service
             XmlNode rootNode = docToSend.CreateElement("Alarms");
             docToSend.AppendChild(rootNode);
 
-            doc.Load(xmlPathLog);
+            doc.Load(xmlPathAlarm);
 
             if (doc != null)
             {
@@ -181,7 +181,7 @@ namespace SmartH2O_Service
             XmlNode rootNode = docToSend.CreateElement("Alarms");
             docToSend.AppendChild(rootNode);
 
-            doc.Load(xmlPathLog);
+            doc.Load(xmlPathAlarm);
             if (doc != null)
             {
                 XmlNodeList xnList = doc.SelectNodes("/Alarms/Sensor[Date='" + date + "' and starts-with(Time,'" + hour + "')]");
