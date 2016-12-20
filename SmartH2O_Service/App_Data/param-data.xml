@@ -1,0 +1,34 @@
+<Sensors>
+  <Sensor>
+    <Name>NH3</Name>
+    <Value>1.66</Value>
+    <ID>2</ID>
+    <Date>20/12/2016</Date>
+    <Time>02:57:01</Time>
+    <TimeStamp>1482202621</TimeStamp>
+  </Sensor>
+  <Sensor>
+    <Name>CI2</Name>
+    <Value>9.6</Value>
+    <ID>3</ID>
+    <Date>20/12/2016</Date>
+    <Time>02:57:07</Time>
+    <TimeStamp>1482202627</TimeStamp>
+  </Sensor>
+  <Sensor>
+    <Name>PH</Name>
+    <Value>6.6</Value>
+    <ID>1</ID>
+    <Date>20/12/2016</Date>
+    <Time>02:57:14</Time>
+    <TimeStamp>1482202634</TimeStamp>
+  </Sensor>
+  <Sensor>
+    <Name>NH3</Name>
+    <Value>1.10</Value>
+    <ID>2</ID>
+    <Date>20/12/2016</Date>
+    <Time>02:57:22</Time>
+    <TimeStamp>1482202642</TimeStamp>
+  </Sensor>
+</Sensors>

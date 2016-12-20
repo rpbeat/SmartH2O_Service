@@ -97,16 +97,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\log-alarms.xml" />
-    <Content Include="App_Data\log-sensors.xml" />
+    <Content Include="App_Data\alarms-data.xml" />
+    <Content Include="App_Data\param-data.xml" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\log-alarms.xsd">
+    <Content Include="App_Data\alarms-data.xsd">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="App_Data\log-sensors.xsd">
+    <Content Include="App_Data\param-data.xsd">
       <SubType>Designer</SubType>
     </Content>
     <None Include="Service References\ServiceReference1\ServiceLog.wsdl" />
