@@ -42,6 +42,12 @@ namespace SmartH2O_Service
         [OperationContract]
         string GetAlarmsByDate(string date);
 
+        [OperationContract]
+        string GetAlarmsBetweenDate(string date1, string date2);
+
+        [OperationContract]
+        string GetAlarmsByDateAndHour(string date, string hour);
+
 
     }
 

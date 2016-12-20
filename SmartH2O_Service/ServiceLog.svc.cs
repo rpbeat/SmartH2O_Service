@@ -126,6 +126,98 @@ namespace SmartH2O_Service
             return docToSend.InnerXml;
         }
 
+        public string GetAlarmsBetweenDate(string date1, string date2)
+        {
+            XmlDocument doc = new XmlDocument();
+            XmlDocument docToSend = new XmlDocument();
+
+            XmlNode rootNode = docToSend.CreateElement("Alarms");
+            docToSend.AppendChild(rootNode);
+
+            doc.Load(xmlPathLog);
+
+            if (doc != null)
+            {
+                XmlNodeList xnList = doc.SelectNodes("/Alarms/Sensor[TimeStamp >= '" + date1 + "' and TimeStamp <= '" + date2 + "']");
+                foreach (XmlNode node in xnList)
+                {
+                    XmlElement sensor = docToSend.CreateElement("Sensor");
+                    rootNode.AppendChild(sensor);
+
+                    XmlNode nameNode = docToSend.CreateElement("Name");
+                    nameNode.InnerText = node["Name"].InnerText;
+                    sensor.AppendChild(nameNode);
+
+                    XmlNode valueNode = docToSend.CreateElement("Value");
+                    valueNode.InnerText = node["Value"].InnerText;
+                    sensor.AppendChild(valueNode);
+
+                    XmlNode idNode = docToSend.CreateElement("ID");
+                    idNode.InnerText = node["ID"].InnerText;
+                    sensor.AppendChild(idNode);
+
+                    XmlNode dateNode = docToSend.CreateElement("Date");
+                    dateNode.InnerText = node["Date"].InnerText;
+                    sensor.AppendChild(dateNode);
+
+                    XmlNode timeNode = docToSend.CreateElement("Time");
+                    timeNode.InnerText = node["Time"].InnerText;
+                    sensor.AppendChild(timeNode);
+
+                    XmlNode timeStampNode = docToSend.CreateElement("TimeStamp");
+                    timeStampNode.InnerText = node["TimeStamp"].InnerText;
+                    sensor.AppendChild(timeStampNode);
+                }
+            }
+            return docToSend.InnerXml;
+        }
+
+        public string GetAlarmsByDateAndHour(string date, string hour)
+        {
+            XmlDocument doc = new XmlDocument();
+
+            XmlDocument docToSend = new XmlDocument();
+
+            XmlNode rootNode = docToSend.CreateElement("Alarms");
+            docToSend.AppendChild(rootNode);
+
+            doc.Load(xmlPathLog);
+            if (doc != null)
+            {
+                XmlNodeList xnList = doc.SelectNodes("/Alarms/Sensor[Date='" + date + "' and starts-with(Time,'" + hour + "')]");
+                foreach (XmlNode node in xnList)
+                {
+                    XmlElement sensor = docToSend.CreateElement("Sensor");
+                    rootNode.AppendChild(sensor);
+
+                    XmlNode nameNode = docToSend.CreateElement("Name");
+                    nameNode.InnerText = node["Name"].InnerText;
+                    sensor.AppendChild(nameNode);
+
+                    XmlNode valueNode = docToSend.CreateElement("Value");
+                    valueNode.InnerText = node["Value"].InnerText;
+                    sensor.AppendChild(valueNode);
+
+                    XmlNode idNode = docToSend.CreateElement("ID");
+                    idNode.InnerText = node["ID"].InnerText;
+                    sensor.AppendChild(idNode);
+
+                    XmlNode dateNode = docToSend.CreateElement("Date");
+                    dateNode.InnerText = node["Date"].InnerText;
+                    sensor.AppendChild(dateNode);
+
+                    XmlNode timeNode = docToSend.CreateElement("Time");
+                    timeNode.InnerText = node["Time"].InnerText;
+                    sensor.AppendChild(timeNode);
+
+                    XmlNode timeStampNode = docToSend.CreateElement("TimeStamp");
+                    timeStampNode.InnerText = node["TimeStamp"].InnerText;
+                    sensor.AppendChild(timeStampNode);
+                }
+            }
+            return docToSend.InnerXml;
+        }
+
         public string SendValues(string docc)
         {
             XmlDocument doc = new XmlDocument();
